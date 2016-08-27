@@ -1,0 +1,21 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <title>Appointments</title>
+</head>
+
+<body>
+  <h1>Today's appointments</h1>
+  <main>
+    {{> calendar}}
+  </main>
+</body>
+
+
+<template name="calendar">
+  <ul class="calendar collection with-header">
+    <li class="collection-header"><h2>{{today}}</h2></li>
+    {{#each hours}}
+    <li class="collection-item" data-time="{{this}}"></li>
+    {{/each}}
+  </ul>
+</template>
