@@ -51,6 +51,28 @@ h1 {
     }
   }
 }
+.appointment {
+  color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  .title, .duration {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .title {
+    font-weight: bold;
+    margin: 0;
+    float: left;
+  }
+  .duration {
+    float: right;
+    display: block;
+  }
+  .description {
+    font-size: 12px;
+    clear: both;
+  }
+}
 aside {
   background: #e4e4e4;
   border-radius: 0 6px 6px 0;

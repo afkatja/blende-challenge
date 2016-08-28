@@ -22,6 +22,17 @@
     <li class="collection-item" data-time="{{this}}"></li>
     {{/each}}
   </ul>
+  {{#each appointments}}
+  <div class="appointment red lighten-1">
+    {{> appointment}}
+  </div>
+  {{/each}}
+</template>
+
+<template name="appointment">
+  <h3 class="title">{{name}}</h3>
+  <span class="duration">{{from}} - {{to}}</span>
+  <p class="description">{{descr}}</p>
 </template>
 
 <template name="details">
