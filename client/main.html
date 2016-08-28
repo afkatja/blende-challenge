@@ -1,12 +1,16 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Appointments</title>
 </head>
 
 <body>
-  <h1>Today's appointments</h1>
   <main>
+    <h1>Today's appointments</h1>
     {{> calendar}}
+    <aside>
+      {{> details}}
+    </aside>
   </main>
 </body>
 
@@ -18,4 +22,31 @@
     <li class="collection-item" data-time="{{this}}"></li>
     {{/each}}
   </ul>
+</template>
+
+<template name="details">
+  <form action="">
+    <fieldset class="input-field">
+      <label for="appointment-title">Title</label>
+      <input type="text" id="appointment-title">
+    </fieldset>
+    <fieldset class="input-field">
+      <i class="material-icons prefix">today</i>
+      <label for="appointment-start">Start time</label>
+      <input type="text" id="appointment-start">
+    </fieldset>
+    <fieldset class="input-field">
+      <i class="material-icons prefix">today</i>
+      <label for="appointment-end">End time</label>
+      <input type="text" id="appointment-end">
+    </fieldset>
+    <fieldset class="input-field">
+      <label for="appointment-descr">Description</label>
+      <textarea name="descr" id="appointment-descr" class="materialize-textarea"></textarea>
+    </fieldset>
+    <fieldset class="input-field">
+      <button type="submit" class="btn waves-effect waves-light green">Save</button>
+      <button type="reset" class="btn waves-effect waves-light grey">Cancel</button>
+    </fieldset>
+  </form>
 </template>
