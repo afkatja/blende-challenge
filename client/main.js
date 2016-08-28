@@ -6,8 +6,7 @@ import './main.html';
 
 import { Appointments } from '../appointments.js';
 
-Template.calendar.onCreated(function() {
-});
+const hoursArray = range(6, 11);
 
 Template.calendar.helpers({
   today() {
@@ -20,8 +19,8 @@ Template.calendar.helpers({
   },
   hours(){
     let hrs = [];
-    for (var i = 7; i < 18; i++) {
-      let hr = i;
+    for (var i = 0; i < hoursArray.length; i++) {
+      let hr = 7 + i; //begin at 07:00
       if(hr < 10){
         hr = '0' + hr;
       }
@@ -35,15 +34,21 @@ Template.calendar.helpers({
   }
 });
 
-const hoursArray = range(6, 11);
 function interpolateTimeToPosition(from, to) {
-  const start = parseInt(from),
-        end = parseInt(to);
+  const start = parseFloat(from),
+        end = parseFloat(to);
   let hour = 80; //height of each .collection-item
   let top = 140; //offsetTop of the first .collection-item
-  if(hoursArray.includes(start) && hoursArray.includes(end)) {
-    let posTop = top + hour * hoursArray.indexOf(start);
-    let height = hour * (hoursArray.indexOf(end) - hoursArray.indexOf(start));
+  if(inRange(start, end, hoursArray)) {
+    let closestStart = hoursArray.reduce( (prev, curr) => {
+      return (Math.abs(curr - start) < Math.abs(prev - start) ? curr : prev);
+    });
+    let closestEnd = hoursArray.reduce( (prev, curr) => {
+      return (Math.abs(curr - end) < Math.abs(prev - end) ? curr : prev);
+    });
+    let halfHourStart = start - closestStart > 0;
+    let posTop = top + hour * hoursArray.indexOf(closestStart) + (halfHourStart ? hour/2 : 0);
+    let height = hour * (hoursArray.indexOf(closestEnd) - hoursArray.indexOf(closestStart));
     return {
       top: posTop,
       height: height
@@ -51,11 +56,12 @@ function interpolateTimeToPosition(from, to) {
   }
 }
 
+function inRange(min, max, range) {
+  return range[0] <= min && range[range.length - 1] >= max;
+}
+
 function range(start, count) {
-  return Array.apply(null, Array(count))
-    .map((_, index) => {
-      return index + start;
-  });
+  return Array.apply(null, Array(count)).map((_, index) => index + start);
 }
 
 Template.calendar.events({
