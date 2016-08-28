@@ -63,7 +63,7 @@ h1 {
   color: #fff;
   padding: 10px;
   border-radius: 3px;
-  &.overlaying {
+  &.overlapping {
     width: calc((60vw - #{$margin-container*2} - 10px) / 2);
     &:nth-child(odd) {
       left: auto;

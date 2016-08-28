@@ -76,9 +76,9 @@ Template.appointment.helpers({
   position(){
     return interpolateTimeToPosition(this.from, this.to);
   },
-  overlaying(){
+  overlapping(){
     if(Appointments.find({from: this.from}).fetch().length) {
-      return 'overlaying';
+      return 'overlapping';
     }
   }
 });
