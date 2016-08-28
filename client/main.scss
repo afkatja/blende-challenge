@@ -55,13 +55,21 @@ h1 {
 }
 
 .appointment {
+  $full-width: calc(60vw - #{$margin-container*2}); //padding on both sides
   position: absolute;
   left: $margin-container + 20px;
-  width: calc(60vw - #{$margin-container} - 40px); //padding on both sides
+  width: $full-width;
   z-index: 1;
   color: #fff;
   padding: 10px;
   border-radius: 3px;
+  &.overlaying {
+    width: calc((60vw - #{$margin-container*2} - 10px) / 2);
+    &:nth-child(odd) {
+      left: auto;
+      right: 20px;
+    }
+  }
   .title, .duration {
     font-size: 14px;
     line-height: 1.5;
@@ -83,7 +91,9 @@ h1 {
     -webkit-appearance: none;
     background: none;
     border: none;
-    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 

@@ -7,7 +7,6 @@ import './main.html';
 import { Appointments } from '../appointments.js';
 
 Template.calendar.onCreated(function() {
-
 });
 
 Template.calendar.helpers({
@@ -42,7 +41,6 @@ function interpolateTimeToPosition(from, to) {
         end = parseInt(to);
   let hour = 80; //height of each .collection-item
   let top = 140; //offsetTop of the first .collection-item
-  let count = 11; //length of collection-items array
   if(hoursArray.includes(start) && hoursArray.includes(end)) {
     let posTop = top + hour * hoursArray.indexOf(start);
     let height = hour * (hoursArray.indexOf(end) - hoursArray.indexOf(start));
@@ -54,7 +52,7 @@ function interpolateTimeToPosition(from, to) {
 }
 
 function range(start, count) {
-  return Array.apply(0, Array(count))
+  return Array.apply(null, Array(count))
     .map((_, index) => {
       return index + start;
   });
@@ -77,6 +75,11 @@ Template.appointment.events({
 Template.appointment.helpers({
   position(){
     return interpolateTimeToPosition(this.from, this.to);
+  },
+  overlaying(){
+    if(Appointments.find({from: this.from}).fetch().length) {
+      return 'overlaying';
+    }
   }
 });
 

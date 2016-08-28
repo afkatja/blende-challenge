@@ -30,7 +30,7 @@
 </template>
 
 <template name="appointment">
-  <div class="appointment red lighten-1" style="top: {{position.top}}px; height: {{position.height}}px">
+  <div class="appointment red lighten-1 {{overlaying}}" style="top: {{position.top}}px; height: {{position.height}}px">
     <h3 class="title">{{name}}</h3>
     <span class="duration">{{from}} - {{to}}</span>
     <p class="description">{{descr}}</p>
