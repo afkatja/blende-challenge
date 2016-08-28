@@ -16,23 +16,26 @@
 
 
 <template name="calendar">
-  <ul class="calendar collection with-header">
-    <li class="collection-header"><h2>{{today}}</h2></li>
-    {{#each hours}}
-    <li class="collection-item" data-time="{{this}}"></li>
-    {{/each}}
-  </ul>
+  <div class="calendar">
+    <ul class="collection with-header">
+      <li class="collection-header"><h2>{{today}}</h2></li>
+      {{#each hours}}
+      <li class="collection-item" data-time="{{this}}"></li>
+      {{/each}}
+    </ul>
   {{#each appointments}}
-  <div class="appointment red lighten-1">
     {{> appointment}}
-  </div>
   {{/each}}
+  </div>
 </template>
 
 <template name="appointment">
-  <h3 class="title">{{name}}</h3>
-  <span class="duration">{{from}} - {{to}}</span>
-  <p class="description">{{descr}}</p>
+  <div class="appointment red lighten-1" style="top: {{position.top}}px; height: {{position.height}}px">
+    <h3 class="title">{{name}}</h3>
+    <span class="duration">{{from}} - {{to}}</span>
+    <p class="description">{{descr}}</p>
+    <button type="button" class="remove-appointment"><i class="material-icons">delete</i></button>
+  </div>
 </template>
 
 <template name="details">

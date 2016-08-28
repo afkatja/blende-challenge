@@ -36,10 +36,28 @@ Template.calendar.helpers({
   }
 });
 
-function interpolateTimeToPosition(time) {
+const hoursArray = range(6, 11);
+function interpolateTimeToPosition(from, to) {
+  const start = parseInt(from),
+        end = parseInt(to);
   let hour = 80; //height of each .collection-item
   let top = 140; //offsetTop of the first .collection-item
   let count = 11; //length of collection-items array
+  if(hoursArray.includes(start) && hoursArray.includes(end)) {
+    let posTop = top + hour * hoursArray.indexOf(start);
+    let height = hour * (hoursArray.indexOf(end) - hoursArray.indexOf(start));
+    return {
+      top: posTop,
+      height: height
+    };
+  }
+}
+
+function range(start, count) {
+  return Array.apply(0, Array(count))
+    .map((_, index) => {
+      return index + start;
+  });
 }
 
 Template.calendar.events({
@@ -47,6 +65,18 @@ Template.calendar.events({
     //get mouse position
     //calculate what time mapped based on position
     //display new appointment with min duration of 30 min
+  }
+});
+
+Template.appointment.events({
+  'click .remove-appointment'(event){
+    Appointments.remove(this._id);
+  }
+});
+
+Template.appointment.helpers({
+  position(){
+    return interpolateTimeToPosition(this.from, this.to);
   }
 });
 

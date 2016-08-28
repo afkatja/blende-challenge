@@ -7,7 +7,7 @@ $margin-collection: 40px;
 }
 body {
   background: $color-text-dark;
-  font-family: 'Open Sans' sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 main {
   display: flex;
@@ -18,40 +18,47 @@ main {
 h1 {
   color: #fff;
 }
-.calendar.collection {
-  flex: 0 0 60vw;
-  height: calc(100vh - #{$margin-container*4});
-  margin-top: 0;
-  background: #fff;
-  color: $color-text-dark;
-  border-radius: 6px;
-  overflow: scroll;
-  border: none;
-  padding: $margin-collection/2 $margin-collection/2 $margin-collection $margin-collection/2; //allow scrolling
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 0 10px rgba(0,0,0, .3);
-  li.collection-item,
-  li.collection-header {
-    display: block;
-    padding-left: $margin-collection;
-  }
-  li.collection-header {
-    text-indent: -$margin-collection; //compensate for margin of the parent
-  }
-  li.collection-item {
-    height: 80px;
-    margin-left: $margin-collection;
+.calendar {
+    flex: 0 0 60vw;
+    height: calc(100vh - #{$margin-container*4});
     position: relative;
-    &:before {
-      content: attr(data-time);
-      position: absolute;
-      left: -$margin-collection;
-      top: calc(100% - 10px);
+    z-index: 1;
+    border-radius: 6px;
+    overflow: scroll;
+  .collection {
+    margin-top: 0;
+    background: #fff;
+    color: $color-text-dark;
+    border: none;
+    padding: $margin-collection/2 $margin-collection/2 $margin-collection $margin-collection/2; //allow scrolling
+    box-shadow: 0 0 10px rgba(0,0,0, .3);
+    li.collection-item,
+    li.collection-header {
+      display: block;
+      padding-left: $margin-collection;
+    }
+    li.collection-header {
+      text-indent: -$margin-collection; //compensate for margin of the parent
+    }
+    li.collection-item {
+      height: 80px;
+      margin-left: $margin-collection;
+      position: relative;
+      &:before {
+        content: attr(data-time);
+        position: absolute;
+        left: -$margin-collection;
+        top: calc(100% - 10px);
+      }
     }
   }
 }
+
 .appointment {
+  position: absolute;
+  left: $margin-container + 20px;
+  width: calc(60vw - #{$margin-container} - 40px); //padding on both sides
+  z-index: 1;
   color: #fff;
   padding: 10px;
   border-radius: 3px;
@@ -72,7 +79,14 @@ h1 {
     font-size: 12px;
     clear: both;
   }
+  .remove-appointment {
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    float: right;
+  }
 }
+
 aside {
   background: #e4e4e4;
   border-radius: 0 6px 6px 0;
