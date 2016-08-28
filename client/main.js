@@ -4,7 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
 Template.calendar.onCreated(function() {
-  
+
 });
 
 Template.calendar.helpers({
@@ -32,5 +32,15 @@ Template.calendar.helpers({
 Template.calendar.events({
   'click'(event, instance) {
     console.log(instance);
+  }
+});
+
+Template.details.events({
+  'submit .details-form'(event) {
+    event.preventDefault();
+    let formData = new FormData(event.target);
+    for (let pair of formData.entries()) {
+      console.log(pair);
+    }
   }
 });
