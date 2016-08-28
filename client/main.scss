@@ -19,19 +19,19 @@ h1 {
   color: #fff;
 }
 .calendar {
-    flex: 0 0 60vw;
-    height: calc(100vh - #{$margin-container*4});
-    position: relative;
-    z-index: 1;
-    border-radius: 6px;
-    overflow: scroll;
+  box-shadow: 0 0 10px rgba(0,0,0, .3);
+  flex: 0 0 60vw;
+  height: calc(100vh - #{$margin-container*4});
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+  overflow: scroll;
   .collection {
     margin-top: 0;
     background: #fff;
     color: $color-text-dark;
     border: none;
     padding: $margin-collection/2 $margin-collection/2 $margin-collection $margin-collection/2; //allow scrolling
-    box-shadow: 0 0 10px rgba(0,0,0, .3);
     li.collection-item,
     li.collection-header {
       display: block;

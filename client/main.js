@@ -10,7 +10,7 @@ const hoursArray = range(6, 11);
 
 Template.calendar.helpers({
   today() {
-    const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+    const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
     let date = new Date();
     let day = date.getDate();
     let month = date.getMonth();
@@ -66,9 +66,9 @@ function range(start, count) {
 
 Template.calendar.events({
   'click'(event, instance) {
-    //get mouse position
-    //calculate what time mapped based on position
-    //display new appointment with min duration of 30 min
+    //TODO get mouse position
+    //TODO calculate what time mapped based on position
+    //TODO display new appointment with min duration of 30 min
   }
 });
 
