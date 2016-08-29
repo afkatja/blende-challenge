@@ -1,12 +1,14 @@
+$color-bg: #948784; //blendle's brown
 $color-text-dark: #444;
 $color-text-light: #ddd;
+$color-red: #FF6255; //blendle's .red
 $margin-container: 40px;
 $margin-collection: 40px;
 *, *:before, *:after {
   box-sizing: border-box !important; //override materialize css
 }
 body {
-  background: $color-text-dark;
+  background: $color-bg;
   font-family: 'Open Sans', sans-serif;
 }
 main {
@@ -17,6 +19,9 @@ main {
 
 h1 {
   color: #fff;
+}
+button.green {
+  background: #20C576; //blendle's green
 }
 .calendar {
   box-shadow: 0 0 10px rgba(0,0,0, .3);
@@ -32,6 +37,7 @@ h1 {
     color: $color-text-dark;
     border: none;
     padding: $margin-collection/2 $margin-collection/2 $margin-collection $margin-collection/2; //allow scrolling
+    margin-bottom: 0;
     li.collection-item,
     li.collection-header {
       display: block;
@@ -44,6 +50,9 @@ h1 {
       height: 80px;
       margin-left: $margin-collection;
       position: relative;
+      &:last-child {
+        border-bottom: 1px solid #e0e0e0; //override materialize
+      }
       &:before {
         content: attr(data-time);
         position: absolute;
@@ -63,6 +72,7 @@ h1 {
   color: #fff;
   padding: 10px;
   border-radius: 3px;
+  background-color: $color-red;
   &.overlapping {
     width: calc((60vw - #{$margin-container*2} - 10px) / 2);
     &:nth-child(odd) {
@@ -90,23 +100,7 @@ h1 {
     position: relative;
     overflow: hidden;
     text-align: justify;
-    max-height: calc(100% - 2em);
-    &:before {
-      content: '...';
-      line-height: 1;
-      position: absolute;
-      right: 20px;
-      bottom: 0;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      right: 20px;
-      width: 1em;
-      height: 1em;
-      margin-top: 0.2em;
-      background: #EF5350; //from materialize's .red
-    }
+    max-height: calc(100% - 2em); //compensate for padding
   }
   .remove-appointment {
     -webkit-appearance: none;

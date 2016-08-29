@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import '../appointments.js'
+import {Appointments} from '../appointments.js'
 
 Meteor.startup(() => {
+  Appointments.remove({});
 });
