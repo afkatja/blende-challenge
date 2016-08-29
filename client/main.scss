@@ -86,6 +86,27 @@ h1 {
   .description {
     font-size: 12px;
     clear: both;
+    padding-right: 30px; //room for delete button
+    position: relative;
+    overflow: hidden;
+    text-align: justify;
+    max-height: calc(100% - 2em);
+    &:before {
+      content: '...';
+      line-height: 1;
+      position: absolute;
+      right: 20px;
+      bottom: 0;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 20px;
+      width: 1em;
+      height: 1em;
+      margin-top: 0.2em;
+      background: #EF5350; //from materialize's .red
+    }
   }
   .remove-appointment {
     -webkit-appearance: none;
